@@ -5,7 +5,7 @@ import { User } from '../model/user-model';
 import express from 'express';
 const router = express.Router()
 
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
   // validate user input
   const { error } = validateRequest(req.body)
   if (error) return res.status(400).send(error.details[0].message)

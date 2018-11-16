@@ -1,4 +1,3 @@
-import config from 'config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -9,10 +8,10 @@ import auth from './server/routes/auth';
 import 'express-async-errors';
 const app = express();
 
-// if (!config.get('jwtPrivateKey')) {
-//   console.error('FATAL ERROR: jwtPrivateKey is not defined');
-//   process.exit(1)
-// }
+if (!process.env.expenseTracker_jwtPrivateKey) {
+  console.error('FATAL ERROR: jwtPrivateKey is not defined');
+  process.exit(1)
+}
 
 mongoose
   .connect(

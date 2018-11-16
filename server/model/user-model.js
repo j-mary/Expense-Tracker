@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import config from 'config';
 import mongoose from 'mongoose';
 import Joi from 'joi';
 
@@ -30,7 +29,15 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'))
+  let expiry = new Date();
+  expiry.setDate(expiry.getDate() + 7);
+  const token = jwt.sign({
+    _id: this._id,
+    isAdmin: this.isAdmin,
+    name: this.name,
+    email: this.email,
+    exp: parseInt(expiry.getTime() / 1000),
+  }, process.env.expenseTracker_jwtPrivateKey);
   return token
 }
 

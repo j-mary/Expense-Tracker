@@ -1,4 +1,5 @@
 import auth from '../middleware/auth';
+import admin from '../middleware/admin';
 import _ from 'lodash';
 import bcrypt from 'bcrypt';
 import express from 'express';
@@ -6,12 +7,13 @@ const router = express.Router()
 
 import { User, validateUser } from '../model/user-model';
 
-router.get('/me', auth, async (req, res) => {
+router.get('/profile', [auth, admin], async (req, res) => {
+  // get user -> exclude user password
   const user = await User.findById(req.user._id).select('-password')
   res.send(user)
 })
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
   // validate user input
   const { error } = validateUser(req.body)
   if (error) return res.status(400).send(error.details[0].message)
