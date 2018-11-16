@@ -1,0 +1,30 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Edit Expense</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form *ngIf="expense" class="create-form" #f="ngForm" (ngSubmit)="update(f)">
+      <mat-form-field class="field-full-width">
+        <input required [(ngModel)]="expense.date" name="date" #date="ngModel" type="text" matInput placeholder="date" />
+        <mat-error *ngIf="date.invalid && (date.touched || date.dirty)"><small class="text-danger">Valid date</small></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required [(ngModel)]="expense.value" type="text" matInput placeholder="value" name="value" />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required [(ngModel)]="expense.reason" type="text" matInput placeholder="reason" name="reason" />
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="/expenses">Cancel</button>&nbsp;
+      <button type="submit" mat-raised-button color="primary">Update</button>
+    </form>
+  </mat-card>
+</div>

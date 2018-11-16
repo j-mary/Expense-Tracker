@@ -1,0 +1,30 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Create A New Expense</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form class="create-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field class="field-full-width">
+        <input required ngModel name="date" #date="ngModel" type="text" matInput placeholder="date" />
+        <mat-error *ngIf="date.invalid && (date.touched || date.dirty)"><small class="text-danger">Valid date</small></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required type="text" matInput placeholder="value" ngModel name="value" />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required type="text" matInput placeholder="reason" ngModel name="reason" />
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="/expenses">Cancel</button>&nbsp;
+      <button type="submit" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

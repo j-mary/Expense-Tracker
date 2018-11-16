@@ -7,7 +7,7 @@ const expenseSchema = new mongoose.Schema({
     required: true
   },
   value: {
-    type: String,
+    type: Number,
     required: true
   },
   reason: {
@@ -21,7 +21,7 @@ const Expense = mongoose.model('Expense', expenseSchema);
 function validateExpense(expense) {
   const schema = {
     date: Joi.date().required(),
-    value: Joi.string().required(),
+    value: Joi.number().required(),
     reason: Joi.string().required()
   };
   return Joi.validate(expense, schema);
