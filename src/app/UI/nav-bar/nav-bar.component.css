@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -15,4 +17,34 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 70px;
+}
+
+.mat-toolbar {
+  background: #F2F2F2;
+}
+
+.brand {
+  text-decoration: none;
+  color: #343E48;
+  font-weight: 600;
+}
+
+.greeting {
+  fill: rgba(255, 255, 255, 0);
+  font-family: "Dancing Script";
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+  stroke-opacity: 0;
+  animation: stroke 7s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
 }

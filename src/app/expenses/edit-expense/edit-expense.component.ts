@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExpenseService } from '../_common/expense.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IExpense } from '../_common/expense.model';
-import { MatSnackBar } from '@angular/material';
-import { FormControl } from '@angular/forms';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-edit-expense',
@@ -18,7 +17,7 @@ export class EditExpenseComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private expenseService: ExpenseService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -37,8 +36,10 @@ export class EditExpenseComponent implements OnInit {
 
     this.expenseService.update(this.expense, value)
       .subscribe(expense => {
-        this.snackBar.open('update was successful')
+        this.alertService.success('update was successful')
         this.router.navigate(['/expenses']);
+      }, err => {
+        this.alertService.error('could not update expense');
       });
   }
 

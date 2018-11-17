@@ -34,7 +34,6 @@ userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign({
     _id: this._id,
     isAdmin: this.isAdmin,
-    user: this.user,
     exp: parseInt(expiry.getTime() / 1000),
   }, process.env.expenseTracker_jwtPrivateKey);
   return token

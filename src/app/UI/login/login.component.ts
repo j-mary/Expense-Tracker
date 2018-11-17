@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -32,9 +32,9 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(result => {
         this.router.navigate([this.returnUrl]);
-        this.snackBar.open("You're now loggedin");
+        this.alertService.success("You're now loggedin");
       }, error => {
-        this.snackBar.open("Invalid email or password");
+        this.alertService.error("Invalid email or password");
       });
   }
 }

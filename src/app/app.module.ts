@@ -19,6 +19,8 @@ import { HomeComponent } from './UI/home/home.component';
 import { LoginComponent } from './UI/login/login.component';
 import { RegisterComponent } from './UI/register/register.component';
 import { ErrorComponent } from './UI/404/404.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
+import { AlertService } from './_services/alert.service';
 
 @NgModule({
   declarations: [
@@ -44,8 +46,10 @@ import { ErrorComponent } from './UI/404/404.component';
   providers: [
     AuthGuard,
     AuthService,
+    AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ],
   bootstrap: [AppComponent]
 })

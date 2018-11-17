@@ -7,7 +7,7 @@ const router = express.Router()
 
 import { User, validateUser } from '../model/user-model';
 
-router.get('/profile', [auth, admin], async (req, res) => {
+router.get('/profile', auth, async (req, res) => {
   // get user -> exclude user password
   const user = await User.findById(req.user._id).select('-password')
   res.send(user)

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/_services/user.service';
-import { MatSnackBar } from '@angular/material';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -24,8 +24,10 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register(value)
       .subscribe(data => {
-        this.snackBar.open('successfull, you can now login');
+        this.alertService.success('Account created, you can now login');
         this.router.navigate(['/login'])
+      }, err => {
+        this.alertService.error('Something went wrong');
       })
   }
 
