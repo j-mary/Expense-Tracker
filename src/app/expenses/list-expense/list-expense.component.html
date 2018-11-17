@@ -38,5 +38,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
+    <div *ngIf="expenses.length == 0" class="text-center">No Expenses at this time</div>
   </mat-card>
 </div>

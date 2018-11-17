@@ -1,0 +1,25 @@
+<div class="page col-6 offset-3 text-center">
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>LOGIN</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form class="create-form" #f="ngForm" (ngSubmit)="login(f)">
+      <mat-form-field class="field-full-width">
+        <input required type="text" matInput placeholder="email" ngModel name="email" />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required type="password" matInput placeholder="password" ngModel name="password" />
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="/">CANCEL</button>&nbsp;
+      <button type="submit" mat-raised-button color="primary">LOGIN</button>
+    </form>
+  </mat-card>
+</div>

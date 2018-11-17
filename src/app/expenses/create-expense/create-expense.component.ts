@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExpenseService } from '../_common/expense.service';
-import { MatSnackBar } from '@angular/material';
+import { FormControl } from '@angular/forms';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-create-expense',
@@ -10,10 +11,12 @@ import { MatSnackBar } from '@angular/material';
 })
 export class CreateExpenseComponent implements OnInit {
 
+  date = new FormControl(new Date());
+
   constructor(
     private router: Router,
     private expenseService: ExpenseService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -26,8 +29,10 @@ export class CreateExpenseComponent implements OnInit {
 
     this.expenseService.add(value)
       .subscribe(expense => {
-        this.snackBar.open('expense added successfully');
+        this.alertService.success('expense was added successfully');
         this.router.navigate(['expenses'])
+      }, err => {
+        this.alertService.error('could not create expense');
       });
   }
 }

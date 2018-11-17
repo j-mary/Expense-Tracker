@@ -1,16 +1,24 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import Joi from 'joi';
+Joi.objectId = require('joi-objectid')(Joi);
 import cors from 'cors';
 import error from './server/middleware/error';
 import expenses from './server/routes/expense-routes';
+import users from './server/routes/user-routes';
+import auth from './server/routes/auth';
 import 'express-async-errors';
-
 const app = express();
+
+if (!process.env.expenseTracker_jwtPrivateKey) {
+  console.error('FATAL ERROR: jwtPrivateKey is not defined');
+  process.exit(1)
+}
 
 mongoose
   .connect(
     'mongodb://localhost:27017/expense-tracker',
-    { useNewUrlParser: true }
+    { useCreateIndex: true, useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.error('Failed to connect to MongoDB...'));
@@ -18,6 +26,8 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use('/api/expenses', expenses);
+app.use('/api/users', users);
+app.use('/api/auth', auth);
 app.use(error);
 
 const port = process.env.PORT || 3000;
