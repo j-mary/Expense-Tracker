@@ -10,7 +10,9 @@ import {
   MatCardModule,
   MatTableModule,
   MatDividerModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -27,7 +29,9 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatToolbarModule,
@@ -40,7 +44,9 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }

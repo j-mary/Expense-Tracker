@@ -34,8 +34,7 @@ userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign({
     _id: this._id,
     isAdmin: this.isAdmin,
-    name: this.name,
-    email: this.email,
+    user: this.user,
     exp: parseInt(expiry.getTime() / 1000),
   }, process.env.expenseTracker_jwtPrivateKey);
   return token
@@ -53,4 +52,4 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 }
 
-export default { User, validateUser }
+export { User, validateUser }

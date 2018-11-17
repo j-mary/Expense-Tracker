@@ -1,0 +1,18 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.register {
+  background: #FF9E15;
+  color: #FFFFFF;
+}
+
+.login {
+  border: 1px solid #FF9E15;
+  color: #FF9E15;
+  background: #F5F5F5;
+}
+
+.pointer {
+  cursor: pointer;
+}

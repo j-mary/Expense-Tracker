@@ -1,9 +1,9 @@
 <mat-toolbar>
-  <div class="box">
-    <div class="heading item">EXPENSE TRACKER</div>
-    <!-- <div class="item">
-      <button mat-raised-button color="accent" routerLink="/">Login</button>&nbsp;
-      <button type="submit" mat-raised-button color="primary" routerLink="/">Register</button>
-    </div> -->
-  </div>
+  <mat-toolbar-row>
+    <div class="heading pointer" [routerLink]="['/']">EXPENSE TRACKER</div>
+    <span class="spacer"></span>
+    <button *ngIf="!auth.loggedIn" class="login" mat-raised-button routerLink="/login">Login</button>&nbsp;
+    <button *ngIf="!auth.loggedIn" class="register" mat-raised-button routerLink="/register">Register</button>
+    <button *ngIf="auth.loggedIn" (click)="logout()" class="register" mat-raised-button routerLink="/register">Logout</button>
+  </mat-toolbar-row>
 </mat-toolbar>

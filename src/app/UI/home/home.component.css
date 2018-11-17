@@ -1,0 +1,16 @@
+.signup {
+  background: #FF9E15;
+  color: #FFFFFF;
+}
+
+.top-2 {
+  margin-top: 30vh;
+  line-height: 1em;
+}
+
+.row {
+  height: 88vh !important;
+  background: #F2F2F2;
+  margin-right: 0;
+  margin-left: 0;
+}

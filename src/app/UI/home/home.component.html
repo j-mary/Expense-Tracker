@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-5">
+    <img src="../../../assets//img/ex.png" alt="">
+  </div>
+  <div class="col-5 top-2">
+    <h3 class="mat-headline">Track and Manage <br> Your Expenses</h3>
+    <p class="mat-subheading-1">Get the most advanced technology in personal finance, now available to everyone.</p>
+    <button *ngIf="!auth.loggedIn" class="signup" mat-raised-button routerLink="/register">Sign Up Now for Free Tools</button>
+    <button *ngIf="auth.loggedIn" class="signup" mat-raised-button (click)="logout()">Sign Out Now</button>
+  </div>
+  <div class="col-1"></div>
+</div>

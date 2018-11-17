@@ -1,0 +1,30 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>SIGN UP</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form class="create-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field class="field-full-width">
+        <input required ngModel name="name" #name="ngModel" type="text" matInput placeholder="name" />
+        <mat-error *ngIf="name.invalid && (name.touched || name.dirty)"><small class="text-danger">Name is required</small></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required type="text" matInput placeholder="email" ngModel name="email" />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input required type="password" matInput placeholder="password" ngModel name="password" />
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="/">Cancel</button>&nbsp;
+      <button type="submit" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

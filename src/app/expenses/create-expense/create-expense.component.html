@@ -7,9 +7,15 @@
     <mat-divider></mat-divider>
     <br>
     <form class="create-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <mat-form-field class="field-full-width">
+      <!-- <mat-form-field class="field-full-width">
         <input required ngModel name="date" #date="ngModel" type="text" matInput placeholder="date" />
         <mat-error *ngIf="date.invalid && (date.touched || date.dirty)"><small class="text-danger">Valid date</small></mat-error>
+      </mat-form-field> -->
+
+      <mat-form-field>
+        <input required ngModel name="date" #date="ngModel" matInput [matDatepicker]="picker" placeholder="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="field-full-width">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExpenseService } from '../_common/expense.service';
 import { MatSnackBar } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-expense',
@@ -9,6 +10,8 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./create-expense.component.css']
 })
 export class CreateExpenseComponent implements OnInit {
+
+  date = new FormControl(new Date());
 
   constructor(
     private router: Router,
