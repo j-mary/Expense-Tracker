@@ -1,10 +1,12 @@
 # ExpenseTracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
+This is a Mean Stack project. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
 
-## Development server
+## To Run this project locally
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone this repo to your local directory, from the terminal run `npm install`, finally,
+
+Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. 
 
 ## Code scaffolding
 
