@@ -1,8 +1,8 @@
-import auth from '../middleware/auth';
-import express from 'express';
-import axios from 'axios';
-import { Expense, validateExpense } from '../model/expense-model';
-import 'express-async-errors';
+const auth = require('../middleware/auth');
+const express = require('express');
+const axios = require('axios');
+const { Expense, validateExpense } = require('../model/expense-model');
+require('express-async-errors');
 
 const router = express.Router();
 
@@ -88,4 +88,4 @@ function financial(x) {
   return Number.parseFloat(x).toFixed(2);
 }
 
-export default router;
+module.exports = router;

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import Joi from 'joi';
+const mongoose = require('mongoose')
+const Joi = require('joi')
 
 const expenseSchema = new mongoose.Schema({
   date: {
@@ -31,4 +31,4 @@ function validateExpense(expense) {
   return Joi.validate(expense, schema);
 }
 
-export { Expense, validateExpense };
+module.exports = { Expense, validateExpense };

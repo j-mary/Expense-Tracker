@@ -1,8 +1,8 @@
-import _ from 'lodash';
-import Joi from 'joi';
-import bcrypt from 'bcrypt';
-import { User } from '../model/user-model';
-import express from 'express';
+const _ = require('lodash')
+const Joi = require('joi')
+const bcrypt = require('bcrypt')
+const { User } = require('../model/user-model')
+const express = require('express')
 const router = express.Router()
 
 router.post('/login', async (req, res) => {
@@ -29,4 +29,4 @@ function validateRequest(req) {
   return Joi.validate(req, schema)
 }
 
-export default router
+module.exports = router;

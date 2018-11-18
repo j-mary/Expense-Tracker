@@ -1,15 +1,15 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import Joi from 'joi';
+const express = require('express')
+const mongoose = require('mongoose')
+const Joi = require('joi')
 Joi.objectId = require('joi-objectid')(Joi);
-import cors from 'cors';
-import error from './server/middleware/error';
-import expenses from './server/routes/expense-routes';
-import users from './server/routes/user-routes';
-import auth from './server/routes/auth';
-import path from 'path';
-import 'express-async-errors';
-import { mongoURI } from './server/config/database';
+const cors = require('cors');
+const error = require('./server/middleware/error');
+const expenses = require('./server/routes/expense-routes');
+const users = require('./server/routes/user-routes');
+const auth = require('./server/routes/auth');
+const path = require('path');
+require('express-async-errors');
+const { mongoURI } = require('./server/config/database');
 const app = express();
 
 if (!process.env.expenseTracker_jwtPrivateKey) {
@@ -24,6 +24,7 @@ mongoose
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.error('Failed to connect to MongoDB...'));
 
+// serve static fronten assets
 app.use(express.static(__dirname + '/dist/expense-tracker'))
 app.use(cors());
 app.use(express.json());

@@ -1,11 +1,10 @@
-import auth from '../middleware/auth';
-import admin from '../middleware/admin';
-import _ from 'lodash';
-import bcrypt from 'bcrypt';
-import express from 'express';
+const auth = require('../middleware/auth');
+const _ = require('lodash');
+const bcrypt = require('bcrypt');
+const express = require('express');
 const router = express.Router()
 
-import { User, validateUser } from '../model/user-model';
+const { User, validateUser } = require('../model/user-model');
 
 router.get('/profile', auth, async (req, res) => {
   // get user -> exclude user password
@@ -31,4 +30,4 @@ router.post('/register', async (req, res) => {
   res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email']))
 })
 
-export default router
+module.exports = router;
