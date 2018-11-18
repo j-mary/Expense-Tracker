@@ -24,8 +24,8 @@ export class CreateExpenseComponent implements OnInit {
 
   onSubmit({ value, valid }) {
     if (!valid) return this.router.navigate(['expenses/add']);
-    // cast value to number
-    value.value = +value.value;
+    // // cast value to number
+    // value.value = +value.value;
 
     this.expenseService.add(value)
       .subscribe(expense => {
