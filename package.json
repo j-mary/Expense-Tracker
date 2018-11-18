@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon --exec babel-node --presets env,stage-2 server.js",
+    "start": "node --exec babel-node --presets env,stage-2 server.js",
+    "postinstall": "ng build --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,6 +12,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~6.1.1",
+    "@angular/compiler-cli": "^6.1.0",
     "@angular/animations": "^6.1.0",
     "@angular/cdk": "^6.2.0",
     "@angular/common": "^6.1.0",
@@ -40,8 +43,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",
-    "@angular/cli": "~6.1.1",
-    "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
