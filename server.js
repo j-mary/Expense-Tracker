@@ -9,6 +9,7 @@ import users from './server/routes/user-routes';
 import auth from './server/routes/auth';
 import path from 'path';
 import 'express-async-errors';
+import { mongoURI } from './server/config/database';
 const app = express();
 
 if (!process.env.expenseTracker_jwtPrivateKey) {
@@ -16,14 +17,8 @@ if (!process.env.expenseTracker_jwtPrivateKey) {
   process.exit(1)
 }
 
-// set connection string based on env
-const connectionString =
-  process.env.NODE_ENV == "production" ?
-    process.env.expenseTracker_MONGODB_URI :
-    'mongodb://localhost:27017/expense-tracker';
-
 mongoose
-  .connect(connectionString,
+  .connect(mongoURI,
     { useCreateIndex: true, useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected...'))

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node --exec babel-node --presets env,stage-2 server.js",
+    "start": "nodemon --exec babel-node --presets env,stage-2 server.js",
     "postinstall": "ng build --prod",
     "build": "ng build",
     "test": "ng test",
