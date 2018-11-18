@@ -10,13 +10,13 @@ import { HomeComponent } from './UI/home/home.component';
 import { AuthGuard } from './_guard/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'expenses', component: ListExpenseComponent, canActivate: [AuthGuard] },
   { path: 'expenses/edit/:id', component: EditExpenseComponent, canActivate: [AuthGuard] },
   { path: 'expenses/add', component: CreateExpenseComponent, canActivate: [AuthGuard] },
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: '' },
   { path: '**', component: ErrorComponent }
 ];
 

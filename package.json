@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "server": "nodemon --exec babel-node --presets env,stage-2 server.js",
-    "start": "ng serve",
+    "start": "nodemon --exec babel-node --presets env,stage-2 server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
