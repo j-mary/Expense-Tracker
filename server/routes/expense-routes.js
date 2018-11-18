@@ -18,30 +18,8 @@ router.get('/:id', auth, async (req, res) => {
 });
 
 router.post('/', auth, async (req, res) => {
-  // save the currency char in a vaiable
-  let currencyChar;
-  if (req.body.value.includes(" ")) {
-    currencyChar = req.body.value.split(" ").pop();
-  }
-  // cast the expense value to number
-  const valueFromBody = req.body.value.split(" ").shift();
-  let expenseValue
-  if (valueFromBody.includes(',')) {
-    expenseValue = +req.body.value.split(",").shift();
-  } else {
-    expenseValue = +valueFromBody
-  }
-  // set 'value' in the request body to number, to pass validation
-  req.body.value = expenseValue;
-  // if all went well -> validate input
-  const { error } = validateExpense(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-  // call external api to get currency rate
-  if (currencyChar) {
-    const rate = await axios.get(`http://free.currencyconverterapi.com/api/v5/convert?q=${currencyChar}_GBP&compact=y`);
-    // set value in request body to converted rate
-    req.body.value = financial(rate.data[`${currencyChar}_GBP`].val * expenseValue);
-  }
+  // perform required checks on 'value' from the request body
+  req.body.value = await checkValue(req);
   // create new expense
   const { date, value, reason } = req.body;
   const { _id } = req.user;
@@ -57,9 +35,8 @@ router.post('/', auth, async (req, res) => {
 });
 
 router.put('/:id', auth, async (req, res) => {
-  // validate input
-  const { error } = validateExpense(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  // perform required checks on 'value' from the request body
+  req.body.value = await checkValue(req);
   // update expense
   const { date, value, reason } = req.body;
   const expense = await Expense.findOneAndUpdate(
@@ -86,6 +63,35 @@ router.delete('/:id', auth, async (req, res) => {
 
 function financial(x) {
   return Number.parseFloat(x).toFixed(2);
+}
+
+async function checkValue(req) {
+  // save the currency char in a vaiable
+  let currencyChar;
+  if (req.body.value.includes(" ")) {
+    currencyChar = req.body.value.split(" ").pop();
+  }
+  // cast the expense value to number
+  const valueFromBody = req.body.value.split(" ").shift();
+  let expenseValue
+  if (valueFromBody.includes(',')) {
+    expenseValue = +req.body.value.split(",").shift();
+  } else {
+    expenseValue = +valueFromBody
+  }
+  // set 'value' in the request body to number, to pass validation
+  req.body.value = expenseValue;
+  // if all went well -> validate input
+  const { error } = validateExpense(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  // call external api to get currency rate
+  if (currencyChar) {
+    const rate = await axios.get(`http://free.currencyconverterapi.com/api/v5/convert?q=${currencyChar}_GBP&compact=y`);
+    // set value in request body to converted rate
+    req.body.value = financial(rate.data[`${currencyChar}_GBP`].val * expenseValue);
+  }
+
+  return req.body.value;
 }
 
 module.exports = router;

@@ -24,7 +24,7 @@ mongoose
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.error('Failed to connect to MongoDB...'));
 
-// serve static fronten assets
+// serve static frontend assets
 app.use(express.static(__dirname + '/dist/expense-tracker'))
 app.use(cors());
 app.use(express.json());
