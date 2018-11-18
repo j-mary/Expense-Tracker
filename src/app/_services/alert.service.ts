@@ -10,28 +10,28 @@ export class AlertService {
 
   success(message: string) {
     const config = new MatSnackBarConfig();
-    config.panelClass = ['bg-success', 'text-center'];
+    config.panelClass = ['bg-success', 'center'];
     config.duration = 2500;
     this.snackBar.open(message, null, config);
   }
 
   info(message: string) {
     const config = new MatSnackBarConfig();
-    config.panelClass = ['bg-info', 'text-center'];
+    config.panelClass = ['bg-info', 'center'];
     config.duration = 2500;
     this.snackBar.open(message, null, config);
   }
 
   warning(message: string) {
     const config = new MatSnackBarConfig();
-    config.panelClass = ['bg-warning', 'text-center'];
+    config.panelClass = ['bg-warning', 'center'];
     config.duration = 2500;
     this.snackBar.open(message, null, config);
   }
 
   error(message: string) {
     const config = new MatSnackBarConfig();
-    config.panelClass = ['bg-danger', 'text-center'];
+    config.panelClass = ['bg-danger', 'center'];
     config.duration = 2500;
     this.snackBar.open(message, null, config);
   }
