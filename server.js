@@ -15,9 +15,14 @@ if (!process.env.expenseTracker_jwtPrivateKey) {
   process.exit(1)
 }
 
+// set connection string based on env
+const connectionString =
+  process.env.NODE_ENV == "production" ?
+    process.env.expenseTracker_MONGODB_URI :
+    'mongodb://localhost:27017/expense-tracker';
+
 mongoose
-  .connect(
-    'mongodb://localhost:27017/expense-tracker',
+  .connect(connectionString,
     { useCreateIndex: true, useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected...'))
