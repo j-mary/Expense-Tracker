@@ -8,22 +8,17 @@ Clone this repo to your local directory, from the terminal run `npm install`, th
 
 Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. 
 
-## Code scaffolding
+## To test API endpoints from postman or Run the frontend and backend on seperate servers
+Clone this repo to your local directory, from the terminal run `npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Locate `server.js` file at the root of the project directory. In this file comment out the bellow lines of code
 
-## Build
+on line 28
+`app.use(express.static(__dirname + '/dist/expense-tracker'))`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+on line 37
+`app.get('/*', (req, res) => res.sendFile(path.join(__dirname + '/dist/expense-tracker/index.html')));`
 
-## Running unit tests
+Run `npm start` for backend server (express). Navigate to `http://localhost:3000/`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `ng serve` for frontend server (Angular). Navigate to `http://localhost:4200/`.
