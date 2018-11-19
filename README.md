@@ -4,7 +4,7 @@ This is a Mean Stack project. It was generated with [Angular CLI](https://github
 
 ## To Run this project locally
 
-Clone this repo to your local directory, from the terminal run `npm install`, finally,
+Clone this repo to your local directory, from the terminal run `npm install`, then `ng build --prod`, finally,
 
 Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. 
 
